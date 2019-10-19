@@ -1,0 +1,6 @@
+#!/bin/bash
+
+xmllint --xpath "${1:-"/"}" - |
+	tidy -qi -w 0 -xml |
+	sed '/<?xml version="1.0"?>/d' |
+	source-highlight -s xml -f esc
